@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,19 +38,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -96,6 +92,78 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
   }
 }
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md shadow-lg;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .btn-primary {
+    @apply bg-company-blue text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-company-midnight focus:ring-2 focus:ring-company-blue/50 focus:outline-none;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-company-blue text-company-blue px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-company-blue hover:text-white focus:ring-2 focus:ring-company-blue/50 focus:outline-none;
+  }
+  
+  .nav-link {
+    @apply relative text-gray-700 hover:text-company-blue transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-company-blue after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left;
+  }
+  
+  .nav-link.active {
+    @apply text-company-blue after:scale-x-100;
+  }
+  
+  .section-title {
+    @apply text-3xl md:text-4xl font-semibold mb-4 text-company-midnight;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-gray-600 mb-12 max-w-3xl mx-auto text-balance;
+  }
+
+  .reveal-on-scroll {
+    @apply opacity-0;
+  }
+  
+  .reveal-on-scroll.active {
+    @apply animate-fade-in;
+  }
+}
+
+/* Ensure smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom cursor for interactive elements */
+button, a, input[type="submit"] {
+  cursor: pointer;
+}
+
+/* Animation delays for staggered animations */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
