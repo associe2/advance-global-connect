@@ -1,6 +1,6 @@
 
 import { useEffect, useState, useRef } from 'react';
-import { ChevronRight } from 'lucide-react';
+import ProfessionalGallery from '../ui/ProfessionalGallery';
 
 const Presentation = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,7 +15,7 @@ const Presentation = () => {
         }
       },
       {
-        threshold: 0.2,
+        threshold: 0.1,
       }
     );
 
@@ -30,39 +30,43 @@ const Presentation = () => {
     };
   }, []);
 
-  const scrollToServices = () => {
-    const servicesSection = document.getElementById('services');
-    if (servicesSection) {
-      servicesSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section id="presentation" className="py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className={`transition-all duration-700 ease-out-expo ${isVisible ? 'opacity-100 transform-none' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-company-midnight font-display">
-              Advance Group International : Expertise et Confiance
-            </h2>
-          </div>
-          
-          <div className={`transition-all duration-700 delay-200 ease-out-expo ${isVisible ? 'opacity-100 transform-none' : 'opacity-0 translate-y-10'}`}>
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
+        <div ref={sectionRef} className="text-center mb-12">
+          <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 transform-none' : 'opacity-0 translate-y-10'}`}
+               style={{ transitionTimingFunction: 'cubic-bezier(0.19, 1, 0.22, 1)' }}>
+            <span className="text-company-blue font-medium inline-block mb-2">QUI SOMMES-NOUS</span>
+            <h2 className="section-title">Advance Group International : Expertise et Confiance</h2>
+            <p className="section-subtitle">
               Intermédiaire financier spécialisé dans l'accompagnement des entreprises et investisseurs internationaux, 
-              nous mettons notre expertise au service de vos projets pour vous aider à atteindre vos objectifs.
+              nous facilitons vos démarches entre l'Afrique et l'Europe avec une équipe expérimentée et multiculturelle.
             </p>
           </div>
-          
-          <div className={`transition-all duration-700 delay-400 ease-out-expo ${isVisible ? 'opacity-100 transform-none' : 'opacity-0 opacity-0 translate-y-10'}`}>
-            <button 
-              onClick={scrollToServices}
-              className="inline-flex items-center gap-2 bg-company-blue text-white px-8 py-3 rounded-md font-medium hover:bg-company-midnight transition-all duration-300 shadow-md group"
+        </div>
+        
+        {/* Gallery of professional images */}
+        <ProfessionalGallery />
+        
+        <div className="flex justify-center mt-8">
+          <a 
+            href="#services" 
+            className="btn-primary flex items-center"
+          >
+            Découvrez nos services
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-5 w-5 ml-2" 
+              viewBox="0 0 20 20" 
+              fill="currentColor"
             >
-              Découvrez nos services
-              <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
+              <path 
+                fillRule="evenodd" 
+                d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 111.414-1.414L10 14.586l5.293-5.293a1 1 0 011.414 0z" 
+                clipRule="evenodd" 
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
