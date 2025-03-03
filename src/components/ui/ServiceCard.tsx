@@ -42,9 +42,10 @@ const ServiceCard = ({ title, description, icon: Icon, delay = 0 }: ServiceCardP
   return (
     <div
       ref={cardRef}
-      className={`bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover-lift transition-all duration-500 ease-out-expo ${
+      className={`bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover-lift transition-all duration-500 ${
         isVisible ? 'opacity-100 transform-none' : 'opacity-0 translate-y-10'
       }`}
+      style={{ transitionTimingFunction: 'cubic-bezier(0.19, 1, 0.22, 1)' }}
     >
       <div className="mb-6 p-4 bg-company-lightBlue rounded-lg inline-block">
         <Icon size={28} className="text-company-blue" />
